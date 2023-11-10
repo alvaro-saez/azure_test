@@ -1,0 +1,9 @@
+{
+	"name": "test-data-factory-alvaro",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5f091876-c8ec-4269-9e92-04db0e76c26e",
+		"tenantId": "0aa2bcee-a333-43f6-bfec-b7ab670fc694"
+	}
+}
