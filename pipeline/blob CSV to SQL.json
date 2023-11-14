@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Cars CSV to SQL",
+				"name": "Cars CSV to SQL pipeline",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
