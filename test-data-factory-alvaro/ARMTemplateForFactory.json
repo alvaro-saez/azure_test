@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"connectionString\"de \"InputBlob\""
 		},
+		"OutputSQLCars_connectionString": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"connectionString\"de \"OutputSQLCars\""
+		},
 		"outputSQL_connectionString": {
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"connectionString\"de \"outputSQL\""
@@ -39,7 +43,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Data flow",
+						"name": "Data flow1",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -77,6 +81,233 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/blob CSV to SQL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Cars CSV to SQL",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "car",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "car",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "mpg",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "mpg",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 3,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "cyl",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "cyl",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "disp",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "disp",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 3,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "hp",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "hp",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "drat",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "drat",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 3,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "wt",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "wt",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 3,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "qsec",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "qsec",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 3,
+											"precision": 18
+										}
+									},
+									{
+										"source": {
+											"name": "vs",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "vs",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "am",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "am",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "gear",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "gear",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "carb",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "carb",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "carsCSVInput",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "carsSQLoutput",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/carsCSVInput')]",
+				"[concat(variables('factoryId'), '/datasets/carsSQLoutput')]"
 			]
 		},
 		{
@@ -160,6 +391,170 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/carsCSVInput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "InputBlob",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "cars.csv",
+						"container": "input"
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "car",
+						"type": "String"
+					},
+					{
+						"name": "mpg",
+						"type": "String"
+					},
+					{
+						"name": "cyl",
+						"type": "String"
+					},
+					{
+						"name": "disp",
+						"type": "String"
+					},
+					{
+						"name": "hp",
+						"type": "String"
+					},
+					{
+						"name": "drat",
+						"type": "String"
+					},
+					{
+						"name": "wt",
+						"type": "String"
+					},
+					{
+						"name": "qsec",
+						"type": "String"
+					},
+					{
+						"name": "vs",
+						"type": "String"
+					},
+					{
+						"name": "am",
+						"type": "String"
+					},
+					{
+						"name": "gear",
+						"type": "String"
+					},
+					{
+						"name": "carb",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/InputBlob')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/carsSQLoutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "OutputSQLCars",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "car",
+						"type": "varchar"
+					},
+					{
+						"name": "mpg",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 3
+					},
+					{
+						"name": "cyl",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "disp",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 3
+					},
+					{
+						"name": "hp",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "drat",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 3
+					},
+					{
+						"name": "wt",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 3
+					},
+					{
+						"name": "qsec",
+						"type": "decimal",
+						"precision": 18,
+						"scale": 3
+					},
+					{
+						"name": "vs",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "am",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "gear",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "carb",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Cars"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/OutputSQLCars')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ADLSGen2')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -199,6 +594,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('InputBlob_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/OutputSQLCars')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('OutputSQLCars_connectionString')]"
 				}
 			},
 			"dependsOn": []

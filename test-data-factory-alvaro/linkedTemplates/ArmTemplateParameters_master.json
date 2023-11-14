@@ -14,6 +14,9 @@
 		"InputBlob_connectionString": {
 			"value": ""
 		},
+		"OutputSQLCars_connectionString": {
+			"value": ""
+		},
 		"outputSQL_connectionString": {
 			"value": ""
 		},
