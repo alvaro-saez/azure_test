@@ -28,7 +28,10 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete from cars",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE dbo.cars;",
+							"type": "Expression"
+						},
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"disableMetricsCollection": false
