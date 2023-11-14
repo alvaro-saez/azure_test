@@ -43,10 +43,13 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "@item().copySink.preCopyScript",
+										"value": "@{item().copySink}",
 										"type": "Expression"
 									},
-									"tableOption": "autoCreate"
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"validateDataConsistency": false,
