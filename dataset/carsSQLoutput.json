@@ -1,0 +1,81 @@
+{
+	"name": "carsSQLoutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputSQLCars",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "car",
+				"type": "varchar"
+			},
+			{
+				"name": "mpg",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "cyl",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "disp",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "hp",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "drat",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "wt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "qsec",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 3
+			},
+			{
+				"name": "vs",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "am",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "gear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "carb",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Cars"
+		}
+	}
+}
