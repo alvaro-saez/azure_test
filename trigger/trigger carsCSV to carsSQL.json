@@ -16,7 +16,7 @@
 			"recurrence": {
 				"frequency": "Minute",
 				"interval": 15,
-				"startTime": "2023-11-14T12:32:00",
+				"startTime": "2023-11-14T12:36:00",
 				"endTime": "2023-11-14T12:40:00",
 				"timeZone": "Romance Standard Time"
 			}
