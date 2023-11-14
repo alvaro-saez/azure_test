@@ -1,0 +1,25 @@
+{
+	"name": "trigger carsCSV to carsSQL",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "blob CSV to SQL",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2023-11-14T12:41:00",
+				"endTime": "2023-11-14T12:46:00",
+				"timeZone": "Romance Standard Time"
+			}
+		}
+	}
+}

@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Cars CSV to SQL",
+				"name": "Cars CSV to SQL pipeline",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -28,8 +28,10 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
+						"preCopyScript": "delete from cars",
 						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
