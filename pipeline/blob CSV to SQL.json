@@ -1,6 +1,216 @@
 {
 	"name": "blob CSV to SQL",
 	"properties": {
+		"activities": [
+			{
+				"name": "Cars CSV to SQL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "car",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "car",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "mpg",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "mpg",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "cyl",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cyl",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "disp",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "disp",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "hp",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "hp",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "drat",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "drat",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "wt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "wt",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "qsec",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "qsec",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 3,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "vs",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "vs",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "am",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "am",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "gear",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gear",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "carb",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "carb",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "carsCSVInput",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "carsSQLoutput",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
 		"annotations": []
 	}
 }
