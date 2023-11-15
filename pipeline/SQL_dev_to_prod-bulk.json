@@ -97,7 +97,7 @@
 							"table": "t0_incidencias_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "TRUNCATE TABLE dbo.t0_incidencias_remedy;"
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_incidencias_remedy) TRUNCATE TABLE dbo.t0_incidencias_remedy;"
 						}
 					},
 					{
@@ -108,7 +108,73 @@
 							"table": "t0_peticiones_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "TRUNCATE TABLE dbo.t0_peticiones_remedy;"
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_peticiones_remedy) TRUNCATE TABLE dbo.t0_peticiones_remedy;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"destination": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_coste_cpu_adicional) TRUNCATE TABLE dbo.t0_coste_cpu_adicional;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_data_tecnica"
+						},
+						"destination": {
+							"table": "t0_data_tecnica"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_data_tecnica) TRUNCATE TABLE dbo.t0_data_tecnica;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"destination": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_disponibilidad_vm) TRUNCATE TABLE dbo.t0_disponibilidad_vm;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"destination": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_gestion_sla_definition) TRUNCATE TABLE dbo.t0_gestion_sla_definition;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"destination": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_tipo_tarificacion_por_cliente) TRUNCATE TABLE dbo.t0_tipo_tarificacion_por_cliente;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"destination": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_nombre_cliente_tecnico_vs_centreon) TRUNCATE TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon;"
 						}
 					}
 				]
