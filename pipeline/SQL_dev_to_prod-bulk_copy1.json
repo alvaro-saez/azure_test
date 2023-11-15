@@ -6,13 +6,21 @@
 			{
 				"name": "ForEach_qwc",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "array_tablas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.cw_items",
+						"value": "@variables('array_tablas')",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy_qwc",
@@ -71,101 +79,21 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "array_tablas",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "array_tablas",
+					"value": "[\n  {\n    \"source\": { \"table\": \"t0_incidencias_remedy\" },\n    \"destination\": { \"table\": \"t0_incidencias_remedy\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_incidencias_remedy) TRUNCATE TABLE dbo.t0_incidencias_remedy;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_peticiones_remedy\" },\n    \"destination\": { \"table\": \"t0_peticiones_remedy\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_peticiones_remedy) TRUNCATE TABLE dbo.t0_peticiones_remedy;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_coste_cpu_adicional\" },\n    \"destination\": { \"table\": \"t0_coste_cpu_adicional\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_coste_cpu_adicional) TRUNCATE TABLE dbo.t0_coste_cpu_adicional;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_data_tecnica\" },\n    \"destination\": { \"table\": \"t0_data_tecnica\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_data_tecnica) TRUNCATE TABLE dbo.t0_data_tecnica;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_disponibilidad_vm\" },\n    \"destination\": { \"table\": \"t0_disponibilidad_vm\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_disponibilidad_vm) TRUNCATE TABLE dbo.t0_disponibilidad_vm;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_gestion_sla_definition\" },\n    \"destination\": { \"table\": \"t0_gestion_sla_definition\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_gestion_sla_definition) TRUNCATE TABLE dbo.t0_gestion_sla_definition;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_tipo_tarificacion_por_cliente\" },\n    \"destination\": { \"table\": \"t0_tipo_tarificacion_por_cliente\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_tipo_tarificacion_por_cliente) TRUNCATE TABLE dbo.t0_tipo_tarificacion_por_cliente;\" }\n  },\n  {\n    \"source\": { \"table\": \"t0_nombre_cliente_tecnico_vs_centreon\" },\n    \"destination\": { \"table\": \"t0_nombre_cliente_tecnico_vs_centreon\" },\n    \"copySink\": { \"preCopyScript\": \"IF EXISTS (SELECT * FROM dbo.t0_nombre_cliente_tecnico_vs_centreon) TRUNCATE TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon;\" }\n  }\n]"
+				}
 			}
 		],
-		"parameters": {
-			"cw_items": {
-				"type": "Array",
-				"defaultValue": [
-					{
-						"source": {
-							"table": "t0_incidencias_remedy"
-						},
-						"destination": {
-							"table": "t0_incidencias_remedy"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_incidencias_remedy)TRUNCATETABLEdbo.t0_incidencias_remedy;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_peticiones_remedy"
-						},
-						"destination": {
-							"table": "t0_peticiones_remedy"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_peticiones_remedy)TRUNCATETABLEdbo.t0_peticiones_remedy;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_coste_cpu_adicional"
-						},
-						"destination": {
-							"table": "t0_coste_cpu_adicional"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_coste_cpu_adicional)TRUNCATETABLEdbo.t0_coste_cpu_adicional;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_data_tecnica"
-						},
-						"destination": {
-							"table": "t0_data_tecnica"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_data_tecnica)TRUNCATETABLEdbo.t0_data_tecnica;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_disponibilidad_vm"
-						},
-						"destination": {
-							"table": "t0_disponibilidad_vm"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_disponibilidad_vm)TRUNCATETABLEdbo.t0_disponibilidad_vm;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_gestion_sla_definition"
-						},
-						"destination": {
-							"table": "t0_gestion_sla_definition"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_gestion_sla_definition)TRUNCATETABLEdbo.t0_gestion_sla_definition;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_tipo_tarificacion_por_cliente"
-						},
-						"destination": {
-							"table": "t0_tipo_tarificacion_por_cliente"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_tipo_tarificacion_por_cliente)TRUNCATETABLEdbo.t0_tipo_tarificacion_por_cliente;"
-						}
-					},
-					{
-						"source": {
-							"table": "t0_nombre_cliente_tecnico_vs_centreon"
-						},
-						"destination": {
-							"table": "t0_nombre_cliente_tecnico_vs_centreon"
-						},
-						"copySink": {
-							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_nombre_cliente_tecnico_vs_centreon)TRUNCATETABLEdbo.t0_nombre_cliente_tecnico_vs_centreon;"
-						}
-					}
-				]
+		"variables": {
+			"array_tablas": {
+				"type": "Array"
 			}
 		},
 		"annotations": []
