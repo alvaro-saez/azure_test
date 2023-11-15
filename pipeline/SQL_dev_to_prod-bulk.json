@@ -97,7 +97,7 @@
 							"table": "t0_incidencias_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_incidencias_remedy) TRUNCATE TABLE dbo.t0_incidencias_remedy;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_incidencias_remedy)TRUNCATETABLEdbo.t0_incidencias_remedy;"
 						}
 					},
 					{
@@ -108,7 +108,7 @@
 							"table": "t0_peticiones_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_peticiones_remedy) TRUNCATE TABLE dbo.t0_peticiones_remedy;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_peticiones_remedy)TRUNCATETABLEdbo.t0_peticiones_remedy;"
 						}
 					},
 					{
@@ -119,7 +119,7 @@
 							"table": "t0_coste_cpu_adicional"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_coste_cpu_adicional) TRUNCATE TABLE dbo.t0_coste_cpu_adicional;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_coste_cpu_adicional)TRUNCATETABLEdbo.t0_coste_cpu_adicional;"
 						}
 					},
 					{
@@ -130,7 +130,7 @@
 							"table": "t0_data_tecnica"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_data_tecnica) TRUNCATE TABLE dbo.t0_data_tecnica;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_data_tecnica)TRUNCATETABLEdbo.t0_data_tecnica;"
 						}
 					},
 					{
@@ -141,7 +141,7 @@
 							"table": "t0_disponibilidad_vm"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_disponibilidad_vm) TRUNCATE TABLE dbo.t0_disponibilidad_vm;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_disponibilidad_vm)TRUNCATETABLEdbo.t0_disponibilidad_vm;"
 						}
 					},
 					{
@@ -152,7 +152,7 @@
 							"table": "t0_gestion_sla_definition"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_gestion_sla_definition) TRUNCATE TABLE dbo.t0_gestion_sla_definition;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_gestion_sla_definition)TRUNCATETABLEdbo.t0_gestion_sla_definition;"
 						}
 					},
 					{
@@ -163,7 +163,7 @@
 							"table": "t0_tipo_tarificacion_por_cliente"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_tipo_tarificacion_por_cliente) TRUNCATE TABLE dbo.t0_tipo_tarificacion_por_cliente;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_tipo_tarificacion_por_cliente)TRUNCATETABLEdbo.t0_tipo_tarificacion_por_cliente;"
 						}
 					},
 					{
@@ -174,7 +174,7 @@
 							"table": "t0_nombre_cliente_tecnico_vs_centreon"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT * FROM dbo.t0_nombre_cliente_tecnico_vs_centreon) TRUNCATE TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon;"
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_nombre_cliente_tecnico_vs_centreon)TRUNCATETABLEdbo.t0_nombre_cliente_tecnico_vs_centreon;"
 						}
 					}
 				]
