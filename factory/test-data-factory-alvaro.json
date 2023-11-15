@@ -5,6 +5,10 @@
 			"database_name_prod": {
 				"type": "string",
 				"value": "alvaro-prod"
+			},
+			"database_name_dev": {
+				"type": "string",
+				"value": "alvaro-dev"
 			}
 		},
 		"globalConfigurations": {
