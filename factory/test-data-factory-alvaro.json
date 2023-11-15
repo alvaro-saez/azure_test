@@ -13,6 +13,10 @@
 			"branch_main": {
 				"type": "string",
 				"value": "main"
+			},
+			"branch_dev": {
+				"type": "string",
+				"value": "dev"
 			}
 		},
 		"globalConfigurations": {
