@@ -25,6 +25,99 @@
 			"branch_name": {
 				"type": "string",
 				"value": "main"
+			},
+			"array_tablas": {
+				"type": "array",
+				"value": [
+					{
+						"source": {
+							"table": "t0_incidencias_remedy"
+						},
+						"destination": {
+							"table": "t0_incidencias_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_incidencias_remedy)TRUNCATETABLEdbo.t0_incidencias_remedy;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_peticiones_remedy"
+						},
+						"destination": {
+							"table": "t0_peticiones_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_peticiones_remedy)TRUNCATETABLEdbo.t0_peticiones_remedy;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"destination": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_coste_cpu_adicional)TRUNCATETABLEdbo.t0_coste_cpu_adicional;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_data_tecnica"
+						},
+						"destination": {
+							"table": "t0_data_tecnica"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_data_tecnica)TRUNCATETABLEdbo.t0_data_tecnica;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"destination": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_disponibilidad_vm)TRUNCATETABLEdbo.t0_disponibilidad_vm;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"destination": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_gestion_sla_definition)TRUNCATETABLEdbo.t0_gestion_sla_definition;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"destination": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_tipo_tarificacion_por_cliente)TRUNCATETABLEdbo.t0_tipo_tarificacion_por_cliente;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"destination": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_nombre_cliente_tecnico_vs_centreon)TRUNCATETABLEdbo.t0_nombre_cliente_tecnico_vs_centreon;"
+						}
+					}
+				]
 			}
 		},
 		"globalConfigurations": {
