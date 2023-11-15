@@ -1,6 +1,12 @@
 {
 	"name": "test-data-factory-alvaro",
 	"properties": {
+		"globalParameters": {
+			"database_name_prod": {
+				"type": "string",
+				"value": "alvaro-prod"
+			}
+		},
 		"globalConfigurations": {
 			"PipelineBillingEnabled": "false"
 		}
