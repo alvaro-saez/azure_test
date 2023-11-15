@@ -1,0 +1,183 @@
+{
+	"name": "SQL_dev_to_prod-bulk_copy1",
+	"properties": {
+		"description": "dbo.t0_incidencias_remedy\ndbo.t0_peticiones_remedy",
+		"activities": [
+			{
+				"name": "ForEach - IterateSQLTables",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.tableList",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy each table",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "dbo.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "dbo.@{item().destination.table}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"preCopyScript": "IF EXISTS (SELECT * FROM dbo.@{item().destination.table}) TRUNCATE TABLE dbo.@{item().destination.table};",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_qwc",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_qwc",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().destination.table"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"tableList": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"table": "t0_incidencias_remedy"
+						},
+						"destination": {
+							"table": "t0_incidencias_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_incidencias_remedy)TRUNCATETABLEdbo.t0_incidencias_remedy;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_peticiones_remedy"
+						},
+						"destination": {
+							"table": "t0_peticiones_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_peticiones_remedy)TRUNCATETABLEdbo.t0_peticiones_remedy;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"destination": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_coste_cpu_adicional)TRUNCATETABLEdbo.t0_coste_cpu_adicional;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_data_tecnica"
+						},
+						"destination": {
+							"table": "t0_data_tecnica"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_data_tecnica)TRUNCATETABLEdbo.t0_data_tecnica;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"destination": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_disponibilidad_vm)TRUNCATETABLEdbo.t0_disponibilidad_vm;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"destination": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_gestion_sla_definition)TRUNCATETABLEdbo.t0_gestion_sla_definition;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"destination": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_tipo_tarificacion_por_cliente)TRUNCATETABLEdbo.t0_tipo_tarificacion_por_cliente;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"destination": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"copySink": {
+							"preCopyScript": "IFEXISTS(SELECT*FROMdbo.t0_nombre_cliente_tecnico_vs_centreon)TRUNCATETABLEdbo.t0_nombre_cliente_tecnico_vs_centreon;"
+						}
+					}
+				]
+			}
+		},
+		"annotations": []
+	}
+}
