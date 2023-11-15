@@ -2,8 +2,11 @@
 	"name": "SourceDataset_qwc",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "devSQL_alvaro_linkServ",
-			"type": "LinkedServiceReference"
+			"referenceName": "SQL_database_parametrized_link_service",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database_name": "alvaro-dev"
+			}
 		},
 		"parameters": {
 			"cw_table": {

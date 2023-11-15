@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "devSQ to prodSQL - t0_disponibilidad_vm",
+				"name": "SQL_dev_to_prod-t0_disponibilidad_vm",
 				"description": "t0_disponibilidad_vm",
 				"type": "Copy",
 				"dependsOn": [],

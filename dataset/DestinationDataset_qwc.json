@@ -2,8 +2,11 @@
 	"name": "DestinationDataset_qwc",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "prodSQL_alvaro_linkServ",
-			"type": "LinkedServiceReference"
+			"referenceName": "SQL_database_parametrized_link_service",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database_name": "alvaro-prod"
+			}
 		},
 		"parameters": {
 			"cw_table": {
