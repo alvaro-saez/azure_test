@@ -2,7 +2,7 @@
 	"name": "test-data-factory-alvaro",
 	"properties": {
 		"globalConfigurations": {
-			"PipelineBillingEnabled": "true"
+			"PipelineBillingEnabled": "false"
 		}
 	},
 	"location": "westeurope",
