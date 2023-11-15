@@ -13,6 +13,7 @@
 						"value": "@pipeline().parameters.cw_items",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy_qwc",
