@@ -9,6 +9,10 @@
 			"database_name_dev": {
 				"type": "string",
 				"value": "alvaro-dev"
+			},
+			"branch_main": {
+				"type": "string",
+				"value": "main"
 			}
 		},
 		"globalConfigurations": {
