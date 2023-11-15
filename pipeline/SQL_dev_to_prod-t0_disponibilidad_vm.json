@@ -21,6 +21,16 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "IF EXISTS (SELECT * FROM dbo.t0_disponibilidad_vm) TRUNCATE TABLE dbo.t0_disponibilidad_vm;",
+							"type": "Expression"
+						},
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
@@ -28,94 +38,117 @@
 							{
 								"source": {
 									"name": "prefix_client",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "prefix_client",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
 									"name": "vm",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "vm",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
 									"name": "availability_perc",
-									"type": "Double"
+									"type": "Double",
+									"physicalType": "float"
 								},
 								"sink": {
 									"name": "availability_perc",
-									"type": "Double"
+									"type": "Double",
+									"physicalType": "float"
 								}
 							},
 							{
 								"source": {
 									"name": "is_critical",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "is_critical",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "bit"
 								}
 							},
 							{
 								"source": {
 									"name": "year_month_day",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "year_month_day",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
 									"name": "created_at",
-									"type": "DateTime"
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "created_at",
-									"type": "DateTime"
+									"type": "DateTime",
+									"physicalType": "datetime"
 								}
 							},
 							{
 								"source": {
 									"name": "origin",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "origin",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
 									"name": "is_measured",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "is_measured",
-									"type": "Boolean"
+									"type": "Boolean",
+									"physicalType": "bit"
 								}
 							},
 							{
 								"source": {
 									"name": "change_origin",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "change_origin",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							}
-						]
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
 					}
 				},
 				"inputs": [
@@ -124,6 +157,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"dabase_name": "alvaro-dev"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQL_t0_disponibilidad_vm",
+						"type": "DatasetReference",
+						"parameters": {
+							"dabase_name": "alvaro-prod"
 						}
 					}
 				]
