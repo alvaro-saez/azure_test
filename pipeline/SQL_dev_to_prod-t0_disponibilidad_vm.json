@@ -1,5 +1,5 @@
 {
-	"name": "From devSQL to prodSQL",
+	"name": "SQL_dev_to_prod-t0_disponibilidad_vm",
 	"properties": {
 		"activities": [
 			{
@@ -153,14 +153,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "devSQL_t0_disponibilidad_vm",
-						"type": "DatasetReference"
+						"referenceName": "SQL_t0_disponibilidad_vm",
+						"type": "DatasetReference",
+						"parameters": {
+							"dabase_name": "alvaro-dev"
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "prodSQL_to_disponibilidad_vm",
-						"type": "DatasetReference"
+						"referenceName": "SQL_t0_disponibilidad_vm",
+						"type": "DatasetReference",
+						"parameters": {
+							"dabase_name": "alvaro-prod"
+						}
 					}
 				]
 			}

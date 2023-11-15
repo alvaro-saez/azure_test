@@ -1,5 +1,5 @@
 {
-	"name": "devSQ to prodSQL - bulk",
+	"name": "SQL_dev_to_prod-bulk",
 	"properties": {
 		"description": "dbo.t0_incidencias_remedy\ndbo.t0_peticiones_remedy",
 		"activities": [

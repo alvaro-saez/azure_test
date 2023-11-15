@@ -1,5 +1,36 @@
 {
 	"name": "test-data-factory-alvaro",
+	"properties": {
+		"globalParameters": {
+			"database_prod": {
+				"type": "string",
+				"value": "alvaro-prod"
+			},
+			"database_dev": {
+				"type": "string",
+				"value": "alvaro-dev"
+			},
+			"branch_main": {
+				"type": "string",
+				"value": "main"
+			},
+			"branch_dev": {
+				"type": "string",
+				"value": "dev"
+			},
+			"database_name": {
+				"type": "string",
+				"value": "alvaro-prod"
+			},
+			"branch_name": {
+				"type": "string",
+				"value": "main"
+			}
+		},
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
 	"location": "westeurope",
 	"identity": {
 		"type": "SystemAssigned",

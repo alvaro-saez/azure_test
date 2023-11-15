@@ -1,9 +1,20 @@
 {
-	"name": "devSQL_t0_disponibilidad_vm",
+	"name": "SQL_t0_disponibilidad_vm",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "devSQL_alvaro_linkServ",
-			"type": "LinkedServiceReference"
+			"referenceName": "SQL_database_parametrized_link_service",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database_name": {
+					"value": "@dataset().dabase_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"dabase_name": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
