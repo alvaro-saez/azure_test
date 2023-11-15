@@ -24,7 +24,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"preCopyScript": {
-							"value": "TRUNCATE TABLE dbo.t0_disponibilidad_vm;",
+							"value": "IF EXISTS (SELECT * FROM dbo.t0_disponibilidad_vm) TRUNCATE TABLE dbo.t0_disponibilidad_vm;",
 							"type": "Expression"
 						},
 						"writeBehavior": "insert",
