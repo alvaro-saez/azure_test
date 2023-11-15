@@ -1,5 +1,5 @@
 {
-	"name": "SQL_dev_to_prod-bulk_copy1",
+	"name": "SQL_dev_to_prod-bulk_variable",
 	"properties": {
 		"description": "dbo.t0_incidencias_remedy\ndbo.t0_peticiones_remedy",
 		"activities": [
