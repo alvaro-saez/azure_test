@@ -1,0 +1,17 @@
+{
+	"name": "SQL_db_destination_copy_table_to_other_db",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"destination_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=test-server-alvaro.database.windows.net;initial catalog=@{linkedService().destination_database_name_to_transfer_table_to_another_database};user id=test-db-alvaro",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDRFNkJENkJCLTMwMjktNEI1OC04NDE2LUJCODM0RkYxNzFBN180ODg3ZWY3Zi1mYjQwLTQxNDgtYWE1NS00ZGM2OGQ2YzVmNWUiDQp9"
+		}
+	}
+}
