@@ -1,0 +1,78 @@
+{
+	"name": "SQLdev_t0_coste_cpu_adicional",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DEV SQL Herramienta COY DATA",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tipo_tarifario",
+				"type": "varchar"
+			},
+			{
+				"name": "type1",
+				"type": "varchar"
+			},
+			{
+				"name": "type2",
+				"type": "varchar"
+			},
+			{
+				"name": "Servicio",
+				"type": "varchar"
+			},
+			{
+				"name": "Coste_Alta",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Coste_Mes",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Marge_Alta",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Marge_Mes",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PVP_Referencia_Alta",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PVP_Referencia_Mes",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "year_month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "created_at",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "origin",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "t0_coste_cpu_adicional"
+		}
+	}
+}
