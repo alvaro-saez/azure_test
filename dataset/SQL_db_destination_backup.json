@@ -3,10 +3,19 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SQL_db_destination_backup_parametriced",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database_name_destination_backup": {
+					"value": "@dataset().database_name",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"tabla_name": {
+				"type": "string"
+			},
+			"database_name": {
 				"type": "string"
 			}
 		},
