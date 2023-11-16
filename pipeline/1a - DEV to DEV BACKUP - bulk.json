@@ -1,5 +1,5 @@
 {
-	"name": "1a - COPY TABLES from DEV to DEV BACKUP",
+	"name": "1a - DEV to DEV BACKUP - bulk",
 	"properties": {
 		"activities": [
 			{

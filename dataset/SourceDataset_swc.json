@@ -10,6 +10,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "OTROS"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

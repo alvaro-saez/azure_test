@@ -1,5 +1,5 @@
 {
-	"name": "1b - COPY TABLES from PROD to DEV",
+	"name": "1b - PROD to DEV - bulk",
 	"properties": {
 		"activities": [
 			{
