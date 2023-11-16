@@ -12,7 +12,13 @@
 						"referenceName": "2a - DEV to DEV BACKUP - individial",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"tabla_name": {
+							"value": "@pipeline().parameters.tabla_name",
+							"type": "Expression"
+						}
+					}
 				}
 			},
 			{
@@ -32,7 +38,13 @@
 						"referenceName": "2b - PROD to DEV - individial",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"tabla_name": {
+							"value": "@pipeline().parameters.tabla_name",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
