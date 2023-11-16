@@ -2,7 +2,7 @@
 	"name": "SQLdev_all_tables_parametrized",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SQL_db_origin_backup_parametriced",
+			"referenceName": "SQL_db_destination_backup_parametriced",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
