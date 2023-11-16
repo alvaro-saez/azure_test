@@ -1,0 +1,24 @@
+{
+	"name": "SQL_db_destination_backup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_db_destination_backup_parametriced",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tabla_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
