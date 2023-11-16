@@ -1,0 +1,1850 @@
+{
+	"name": "COPY TABLES from DEV to DEV BACKUP",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy1_dbo_t0_coste_cpu_adicional_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_coste_cpu_adicional"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_coste_cpu_adicional_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "IF EXISTS (SELECT * FROM dbo.@{item().destination.table}) TRUNCATE TABLE dbo.@{item().destination.table};\nIF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tTRUNCATE TABLE dbo.@{item().destination.table}\nEND",
+							"type": "Expression"
+						},
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "tipo_tarifario",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tipo_tarifario",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "type1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "type1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "type2",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "type2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Servicio",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Servicio",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Coste_Alta",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "Coste_Alta",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Coste_Mes",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "Coste_Mes",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Marge_Alta",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "Marge_Alta",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "Marge_Mes",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "Marge_Mes",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "PVP_Referencia_Alta",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "PVP_Referencia_Alta",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "PVP_Referencia_Mes",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "PVP_Referencia_Mes",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "year_month",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "year_month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_coste_cpu_adicional"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_coste_cpu_adicional_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy2_dbo_t0_data_tecnica_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_data_tecnica"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_data_tecnica_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "vm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "vm",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tipo_tarifario",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tipo_tarifario",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "powerstate",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "powerstate",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "datacenter",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "datacenter",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "client",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "client",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "pool",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "pool",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "host",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "host",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "os",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "os",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "v_cpu",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "v_cpu",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "v_memory",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "v_memory",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "hd_capacity",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "hd_capacity",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tier_computo",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tier_computo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tier_facturable",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tier_facturable",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "path",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "path",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "year_month",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "year_month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_data_tecnica"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_data_tecnica_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy3_dbo_t0_disponibilidad_vm_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_disponibilidad_vm"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_disponibilidad_vm_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "prefix_client",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "prefix_client",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "vm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "vm",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "availability_perc",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "availability_perc",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "is_critical",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "is_critical",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "year_month_day",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "year_month_day",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "is_measured",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "is_measured",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "change_origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "change_origin",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_disponibilidad_vm"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_disponibilidad_vm_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy4_dbo_t0_gestion_sla_definition_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_gestion_sla_definition"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_gestion_sla_definition_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "client",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "client",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cod_sla_n1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cod_sla_n1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cod_sla_def",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cod_sla_def",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_gestion_sla_definition"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_gestion_sla_definition_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy5_dbo_t0_incidencias_remedy_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_incidencias_remedy"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_incidencias_remedy_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Empresa",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Empresa",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "N_Incidencia",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "N_Incidencia",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Entorno",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Entorno",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Apellidos",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Apellidos",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Nombre",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Nombre",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Centro_Usuario",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Centro_Usuario",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Descripcion_Corta",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Descripcion_Corta",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Prioridad",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Prioridad",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Estado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Estado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Organizacion_Soporte",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Organizacion_Soporte",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Grupo_Asignado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Grupo_Asignado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Usuario_Asignado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Usuario_Asignado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_2",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_3",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Operacional_1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Operacional_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Operacional_2",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Operacional_2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Resolucion",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Resolucion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Resolucion_Corta",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Resolucion_Corta",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Notificacion",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Notificacion",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Ultima_Solucion",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Ultima_Solucion",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Envio",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Envio",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Cierre",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Cierre",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_total",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Tiempo_total",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ID_SLM",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ID_SLM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Nombre_SLM",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Nombre_SLM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Estado_SLM",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Estado_SLM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Grupo_Soporte_CAU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Grupo_Soporte_CAU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Respuesta",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Tiempo_Respuesta",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Resolucion",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Tiempo_Resolucion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Respuesta_InSec",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "Tiempo_Respuesta_InSec",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Resolucion_InSec",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "Tiempo_Resolucion_InSec",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "yearmonthday",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "yearmonthday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Servicio",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Servicio",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "actuaciones",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "actuaciones",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Ultima_Modificacion",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Ultima_Modificacion",
+									"type": "DateTime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_incidencias_remedy"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_incidencias_remedy_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy6_dbo_t0_nombre_cliente_tecnico_vs_centreon_ba",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_nombre_cliente_tecnico_vs_centreon"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_nombre_cliente_tecnico_vs_centreon_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "technical_client_name",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "technical_client_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "centreon_client_name",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "centreon_client_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "group_name",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "group_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "year_month",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "year_month",
+									"type": "Int32"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_nombre_cliente_tecnico_vs_centreon"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_nombre_cliente_tecnico_vs_centreon_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy7_dbo_t0_peticiones_remedy_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_peticiones_remedy"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_peticiones_remedy_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Empresa",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Empresa",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Request",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Request",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WorkOrder",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "WorkOrder",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Apellidos",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Apellidos",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Nombre",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Nombre",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Centro_Usuario",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Centro_Usuario",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Descripcion_Corta",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Descripcion_Corta",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Prioridad",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Prioridad",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Estado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Estado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Servicio",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Servicio",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Organizacion_Soporte",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Organizacion_Soporte",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Grupo_Asignado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Grupo_Asignado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Usuario_Asignado",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Usuario_Asignado",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_1",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_2",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Categorizacion_Producto_3",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Categorizacion_Producto_3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Resolucion_Corta",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Resolucion_Corta",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Envio",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Envio",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Completada",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Completada",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Cierre",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Cierre",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Resolucion",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Tiempo_Resolucion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Tiempo_Resolucion_InSec",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "Tiempo_Resolucion_InSec",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "yearmonthday",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "yearmonthday",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "actuaciones",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "actuaciones",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fecha_Ultima_Modificacion",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "Fecha_Ultima_Modificacion",
+									"type": "DateTime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_peticiones_remedy"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_peticiones_remedy_backup"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy8_dbo_t0_tipo_tarificacion_por_cliente_backup",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.t0_tipo_tarificacion_por_cliente"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.t0_tipo_tarificacion_por_cliente_backup"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "cliente",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cliente",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tipo_tarificacion",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tipo_tarificacion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "year_month",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "year_month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "created_at",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "origin",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "origin",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_tipo_tarificacion_por_cliente"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_20y",
+						"type": "DatasetReference",
+						"parameters": {
+							"cw_table": "t0_tipo_tarificacion_por_cliente_backup"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
