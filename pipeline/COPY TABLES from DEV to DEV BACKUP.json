@@ -30,7 +30,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_coste_cpu_adicional_backup)\nBEGIN\n\tDROP TABLE dbo.t0_coste_cpu_adicional_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_coste_cpu_adicional_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_coste_cpu_adicional_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -239,7 +239,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_data_tecnica_backup)\nBEGIN\n\tDROP TABLE dbo.t0_data_tecnica_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_data_tecnica_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_data_tecnica_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -492,7 +492,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_disponibilidad_vm_backup)\nBEGIN\n\tDROP TABLE dbo.t0_disponibilidad_vm_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_disponibilidad_vm_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_disponibilidad_vm_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -657,7 +657,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_gestion_sla_definition_backup)\nBEGIN\n\tDROP TABLE dbo.t0_gestion_sla_definition_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_gestion_sla_definition_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_gestion_sla_definition_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -778,7 +778,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_incidencias_remedy_backup)\nBEGIN\n\tDROP TABLE dbo.t0_incidencias_remedy_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_incidencias_remedy_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_incidencias_remedy_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -1273,7 +1273,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_nombre_cliente_tecnico_vs_centreon_backup)\nBEGIN\n\tDROP TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_nombre_cliente_tecnico_vs_centreon_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -1405,7 +1405,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_peticiones_remedy_backup)\nBEGIN\n\tDROP TABLE dbo.t0_peticiones_remedy_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_peticiones_remedy_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_peticiones_remedy_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -1779,7 +1779,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_tipo_tarificacion_por_cliente_backup)\nBEGIN\n\tDROP TABLE dbo.t0_tipo_tarificacion_por_cliente_backup\nEND",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_tipo_tarificacion_por_cliente_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_tipo_tarificacion_por_cliente_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
