@@ -16,11 +16,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "dbo.t0_coste_cpu_adicional"
+						"value": "dbo.@{'t0_coste_cpu_adicional'}"
 					},
 					{
 						"name": "Destination",
-						"value": "dbo.t0_coste_cpu_adicional"
+						"value": "dbo.@{'t0_coste_cpu_adicional'}"
 					}
 				],
 				"typeProperties": {
@@ -49,14 +49,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SQLprod_t0_coste_cpu_adicional",
-						"type": "DatasetReference"
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_coste_cpu_adicional"
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SQLdev_t0_coste_cpu_adicional",
-						"type": "DatasetReference"
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_coste_cpu_adicional"
+						}
 					}
 				]
 			}
