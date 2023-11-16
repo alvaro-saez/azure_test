@@ -1,0 +1,41 @@
+{
+	"name": "1 - BACKUP PROCESS",
+	"properties": {
+		"activities": [
+			{
+				"name": "COPY TABLES from DEV to DEV BACKUP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "1a - COPY TABLES from DEV to DEV BACKUP",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "COPY TABLES from PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "COPY TABLES from DEV to DEV BACKUP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "1b - COPY TABLES from PROD to DEV",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
