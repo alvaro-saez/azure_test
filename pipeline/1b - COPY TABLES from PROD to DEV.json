@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "dbo_t0_coste_cpu_adicional",
+				"name": "t0_coste_cpu_adicional",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -67,7 +67,7 @@
 				]
 			},
 			{
-				"name": "dbo_t0_data_tecnica",
+				"name": "t0_data_tecnica",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -80,11 +80,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "dbo.@{'dbo_t0_data_tecnica'}"
+						"value": "dbo.@{'t0_data_tecnica'}"
 					},
 					{
 						"name": "Destination",
-						"value": "dbo.@{'dbo_t0_data_tecnica'}"
+						"value": "dbo.@{'t0_data_tecnica'}"
 					}
 				],
 				"typeProperties": {
@@ -95,7 +95,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF OBJECT_ID('dbo.dbo_t0_data_tecnica', 'U') IS NOT NULL  \n   DROP TABLE dbo.dbo_t0_data_tecnica;  ",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_data_tecnica', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_data_tecnica;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -116,7 +116,7 @@
 						"referenceName": "SQLprod_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "dbo_t0_data_tecnica"
+							"tabla_name": "t0_data_tecnica"
 						}
 					}
 				],
@@ -125,7 +125,7 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "dbo_t0_data_tecnica"
+							"tabla_name": "t0_data_tecnica"
 						}
 					}
 				]
