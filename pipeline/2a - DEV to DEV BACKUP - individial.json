@@ -1,5 +1,5 @@
 {
-	"name": "2b - DEV to PROD - individial_copy1",
+	"name": "2a - DEV to DEV BACKUP - individial",
 	"properties": {
 		"activities": [
 			{
@@ -20,7 +20,7 @@
 					},
 					{
 						"name": "Destination",
-						"value": "dbo.@{pipeline().parameters.tabla_name}"
+						"value": "dbo.@{concat(pipeline().parameters.tabla_name, '_backup')}"
 					}
 				],
 				"typeProperties": {
@@ -31,7 +31,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name};  ",
+						"preCopyScript": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_backup;  ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SQLprod_all_tables_parametrized",
+						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
 							"tabla_name": "@pipeline().parameters.tabla_name"
@@ -61,7 +61,7 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": "@{pipeline().parameters.tabla_name}_backup"
 						}
 					}
 				]
