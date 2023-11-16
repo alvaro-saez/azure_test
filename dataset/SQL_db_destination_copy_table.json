@@ -1,0 +1,36 @@
+{
+	"name": "SQL_db_destination_copy_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_db_destination_copy_table_to_other_db",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"destination_database_name_to_transfer_table_to_another_database": {
+					"value": "@dataset().database_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			},
+			"database_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BACKUP PROCESS DATASETS/To transfer tables"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tabla_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
