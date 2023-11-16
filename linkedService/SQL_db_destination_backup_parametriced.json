@@ -1,0 +1,17 @@
+{
+	"name": "SQL_db_destination_backup_parametriced",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"database_name_destination_backup": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=test-server-alvaro.database.windows.net;initial catalog=@{linkedService().database_name_destination_backup};user id=test-db-alvaro",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDRFNkJENkJCLTMwMjktNEI1OC04NDE2LUJCODM0RkYxNzFBN18wMTM2YTljNS1lYzAzLTQ1MGQtYTIyZi00ZDRkYTc1MGRmMjYiDQp9"
+		}
+	}
+}
