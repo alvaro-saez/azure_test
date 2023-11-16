@@ -31,6 +31,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}; ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
