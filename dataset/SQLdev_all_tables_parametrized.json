@@ -1,0 +1,24 @@
+{
+	"name": "SQLdev_all_tables_parametrized",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DEV SQL Herramienta COY DATA",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tabla_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
