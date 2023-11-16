@@ -5,12 +5,20 @@
 			"referenceName": "SQL_db_origin_backup_parametriced",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "@{pipeline().parameters.tabla_name}"
+			"table": {
+				"value": "@dataset().tabla_name",
+				"type": "Expression"
+			}
 		}
 	}
 }
