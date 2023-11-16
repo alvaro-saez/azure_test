@@ -52,10 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SQLdev_all_tables_parametrized",
+						"referenceName": "SQL_db_origin_backup",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": {
+								"value": "@pipeline().parameters.tabla_name",
+								"type": "Expression"
+							}
 						}
 					}
 				],
