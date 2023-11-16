@@ -1,0 +1,16 @@
+{
+	"name": "SQL_db_origin_backup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL_db_origin_backup_parametriced",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "@{pipeline().parameters.tabla_name}"
+		}
+	}
+}
