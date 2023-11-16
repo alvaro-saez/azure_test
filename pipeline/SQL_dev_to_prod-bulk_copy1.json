@@ -44,7 +44,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "IF EXISTS (SELECT * FROM dbo.@{item().destination.table}) TRUNCATE TABLE dbo.@{item().destination.table};\nIF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tTRUNCATE TABLE dbo.@{item().destination.table}\nEND",
+										"value": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tTRUNCATE TABLE dbo.@{item().destination.table}\nEND",
 										"type": "Expression"
 									},
 									"writeBehavior": "insert",
