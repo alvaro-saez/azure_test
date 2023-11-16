@@ -16,11 +16,11 @@
 				"userProperties": [
 					{
 						"name": "Source",
-						"value": "dbo.@{'<tabla_name>'}"
+						"value": "dbo.@{pipeline().parameters.tabla_name}"
 					},
 					{
 						"name": "Destination",
-						"value": "dbo.@{'<tabla_name>'}"
+						"value": "dbo.@{pipeline().parameters.tabla_name}"
 					}
 				],
 				"typeProperties": {
@@ -31,7 +31,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF EXISTS (SELECT * FROM dbo.@{'<tabla_name>'}) TRUNCATE TABLE dbo.@{'<tabla_name>'};",
+						"preCopyScript": "IF EXISTS (SELECT * FROM dbo.@{pipeline().parameters.tabla_name}) TRUNCATE TABLE dbo.@{pipeline().parameters.tabla_name};",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -50,17 +50,31 @@
 				"inputs": [
 					{
 						"referenceName": "SQLdev_all_tables_parametrized",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "@pipeline().parameters.tabla_name"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "SQLprod_all_tables_parametrized",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": {
+								"value": "@pipeline().parameters.tabla_name",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"tabla_name": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
