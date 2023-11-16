@@ -1,9 +1,9 @@
 {
-	"name": "1 - COPY TABLES from DEV to DEV BACKUP",
+	"name": "1a - COPY TABLES from DEV to DEV BACKUP",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy1_dbo_t0_coste_cpu_adicional_backup",
+				"name": "t0_coste_cpu_adicional",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -212,7 +212,7 @@
 				]
 			},
 			{
-				"name": "Copy2_dbo_t0_data_tecnica_backup",
+				"name": "t0_data_tecnica",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -465,7 +465,7 @@
 				]
 			},
 			{
-				"name": "Copy3_dbo_t0_disponibilidad_vm_backup",
+				"name": "t0_disponibilidad_vm",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -630,7 +630,7 @@
 				]
 			},
 			{
-				"name": "Copy4_dbo_t0_gestion_sla_definition_backup",
+				"name": "t0_gestion_sla_definition",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -751,7 +751,7 @@
 				]
 			},
 			{
-				"name": "Copy5_dbo_t0_incidencias_remedy_backup",
+				"name": "t0_incidencias_remedy",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -1246,7 +1246,7 @@
 				]
 			},
 			{
-				"name": "Copy6_dbo_t0_nombre_cliente_tecnico_vs_centreon_ba",
+				"name": "t0_nombre_cliente_tecnico_vs_centreon_backup",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -1378,7 +1378,7 @@
 				]
 			},
 			{
-				"name": "Copy7_dbo_t0_peticiones_remedy_backup",
+				"name": "t0_peticiones_remedy",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -1752,7 +1752,7 @@
 				]
 			},
 			{
-				"name": "Copy8_dbo_t0_tipo_tarificacion_por_cliente_backup",
+				"name": "t0_tipo_tarificacion_por_cliente",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -1873,6 +1873,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "BACKUP PROCESS"
+		},
 		"annotations": []
 	}
 }

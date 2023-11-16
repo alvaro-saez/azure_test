@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_ju2",
+	"name": "DestinationDataset_swc",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DEV SQL Herramienta COY DATA",
@@ -9,9 +9,6 @@
 			"cw_table": {
 				"type": "String"
 			}
-		},
-		"folder": {
-			"name": "OTROS"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

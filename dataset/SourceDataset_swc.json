@@ -1,17 +1,14 @@
 {
-	"name": "DestinationDataset_ju2",
+	"name": "SourceDataset_swc",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DEV SQL Herramienta COY DATA",
+			"referenceName": "PROD SQL Herramienta COPY DATA",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"cw_table": {
 				"type": "String"
 			}
-		},
-		"folder": {
-			"name": "OTROS"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

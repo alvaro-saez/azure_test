@@ -1,17 +1,17 @@
 {
-	"name": "DestinationDataset_ju2",
+	"name": "SQLdev_all_tables_parametrized",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DEV SQL Herramienta COY DATA",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"cw_table": {
-				"type": "String"
+			"tabla_name": {
+				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "OTROS"
+			"name": "SQLdb parametrizados"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
@@ -19,7 +19,7 @@
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
-				"value": "@dataset().cw_table",
+				"value": "@dataset().tabla_name",
 				"type": "Expression"
 			}
 		}
