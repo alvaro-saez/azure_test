@@ -44,7 +44,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tTRUNCATE TABLE dbo.@{item().destination.table}\nEND",
+										"value": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tDROP TABLE dbo.@{item().destination.table}\nEND",
 										"type": "Expression"
 									},
 									"writeBehavior": "insert",
@@ -89,7 +89,96 @@
 		"parameters": {
 			"cw_items": {
 				"type": "Array",
-				"defaultValue": "[   {     \"source\": { \"table\": \"t0_incidencias_remedy\" },     \"destination\": { \"table\": \"t0_incidencias_remedy\" },   },   {     \"source\": { \"table\": \"t0_peticiones_remedy\" },     \"destination\": { \"table\": \"t0_peticiones_remedy\" },   },   {     \"source\": { \"table\": \"t0_coste_cpu_adicional\" },     \"destination\": { \"table\": \"t0_coste_cpu_adicional\" },   },   {     \"source\": { \"table\": \"t0_data_tecnica\" },     \"destination\": { \"table\": \"t0_data_tecnica\" },   },   {     \"source\": { \"table\": \"t0_disponibilidad_vm\" },     \"destination\": { \"table\": \"t0_disponibilidad_vm\" },   },   {     \"source\": { \"table\": \"t0_gestion_sla_definition\" },     \"destination\": { \"table\": \"t0_gestion_sla_definition\" },   },   {     \"source\": { \"table\": \"t0_tipo_tarificacion_por_cliente\" },     \"destination\": { \"table\": \"t0_tipo_tarificacion_por_cliente\" },   },   {     \"source\": { \"table\": \"t0_nombre_cliente_tecnico_vs_centreon\" },     \"destination\": { \"table\": \"t0_nombre_cliente_tecnico_vs_centreon\" }   } ]"
+				"defaultValue": [
+					{
+						"source": {
+							"table": "t0_incidencias_remedy"
+						},
+						"destination": {
+							"table": "t0_incidencias_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_incidencias_remedy)     BEGIN         DROP TABLE dbo.t0_incidencias_remedy}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_peticiones_remedy"
+						},
+						"destination": {
+							"table": "t0_peticiones_remedy"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_peticiones_remedy)     BEGIN         DROP TABLE dbo.t0_peticiones_remedy}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"destination": {
+							"table": "t0_coste_cpu_adicional"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_coste_cpu_adicional)     BEGIN         DROP TABLE dbo.t0_coste_cpu_adicional}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_data_tecnica"
+						},
+						"destination": {
+							"table": "t0_data_tecnica"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_data_tecnica)     BEGIN         DROP TABLE dbo.t0_data_tecnica}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"destination": {
+							"table": "t0_disponibilidad_vm"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_disponibilidad_vm)     BEGIN         DROP TABLE dbo.t0_disponibilidad_vm}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"destination": {
+							"table": "t0_gestion_sla_definition"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_gestion_sla_definition)     BEGIN         DROP TABLE dbo.t0_gestion_sla_definition}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"destination": {
+							"table": "t0_tipo_tarificacion_por_cliente"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_tipo_tarificacion_por_cliente)     BEGIN         DROP TABLE dbo.t0_tipo_tarificacion_por_cliente}     END;"
+						}
+					},
+					{
+						"source": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"destination": {
+							"table": "t0_nombre_cliente_tecnico_vs_centreon"
+						},
+						"copySink": {
+							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_nombre_cliente_tecnico_vs_centreon)     BEGIN         DROP TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon}     END;"
+						}
+					}
+				]
 			}
 		},
 		"annotations": []
