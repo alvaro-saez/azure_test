@@ -82,12 +82,6 @@
 			},
 			"database_name_destination_backup": {
 				"type": "string"
-			},
-			"origin_database_name_to_transfer_table_to_another_database": {
-				"type": "string"
-			},
-			"destination_database_name_to_transfer_table_to_another_database": {
-				"type": "string"
 			}
 		},
 		"folder": {
