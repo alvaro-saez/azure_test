@@ -65,6 +65,454 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "dbo_t0_data_tecnica",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'dbo_t0_data_tecnica'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'dbo_t0_data_tecnica'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.dbo_t0_data_tecnica', 'U') IS NOT NULL  \n   DROP TABLE dbo.dbo_t0_data_tecnica;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "dbo_t0_data_tecnica"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "dbo_t0_data_tecnica"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_disponibilidad_vm",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_disponibilidad_vm'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_disponibilidad_vm'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_disponibilidad_vm', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_disponibilidad_vm;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_disponibilidad_vm"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_disponibilidad_vm"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_gestion_sla_definition",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_gestion_sla_definition'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_gestion_sla_definition'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_gestion_sla_definition', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_gestion_sla_definition;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_gestion_sla_definition"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_gestion_sla_definition"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_incidencias_remedy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_incidencias_remedy'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_incidencias_remedy'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_incidencias_remedy', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_incidencias_remedy;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_incidencias_remedy"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_incidencias_remedy"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_nombre_cliente_tecnico_vs_centreon",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_nombre_cliente_tecnico_vs_centreon'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_nombre_cliente_tecnico_vs_centreon'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_nombre_cliente_tecnico_vs_centreon', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_nombre_cliente_tecnico_vs_centreon"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_nombre_cliente_tecnico_vs_centreon"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_peticiones_remedy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_peticiones_remedy'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_peticiones_remedy'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_peticiones_remedy', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_peticiones_remedy;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_peticiones_remedy"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_peticiones_remedy"
+						}
+					}
+				]
+			},
+			{
+				"name": "t0_tipo_tarificacion_por_cliente",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "dbo.@{'t0_tipo_tarificacion_por_cliente'}"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.@{'t0_tipo_tarificacion_por_cliente'}"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "IF OBJECT_ID('dbo.t0_tipo_tarificacion_por_cliente', 'U') IS NOT NULL  \n   DROP TABLE dbo.t0_tipo_tarificacion_por_cliente;  ",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SQLprod_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_tipo_tarificacion_por_cliente"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SQLdev_all_tables_parametrized",
+						"type": "DatasetReference",
+						"parameters": {
+							"tabla_name": "t0_tipo_tarificacion_por_cliente"
+						}
+					}
+				]
 			}
 		],
 		"annotations": []
