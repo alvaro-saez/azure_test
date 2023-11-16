@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2a - CLONE DEV to DEV BACKUP - individial_copy1",
+						"referenceName": "2a - DYNAMIC BACKUP - individial",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
@@ -43,7 +43,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2b - CLONE PROD to DEV - individial_copy1",
+						"referenceName": "2b - DYNAMIC TRANSFER TABLES - individial",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
