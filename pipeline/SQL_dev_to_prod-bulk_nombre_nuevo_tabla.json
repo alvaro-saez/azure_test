@@ -1,22 +1,22 @@
 {
-	"name": "SQL_dev_to_prod-bulk",
+	"name": "SQL_dev_to_prod-bulk_nombre_nuevo_tabla",
 	"properties": {
 		"description": "dbo.t0_incidencias_remedy\ndbo.t0_peticiones_remedy",
 		"activities": [
 			{
-				"name": "ForEach_qwc",
+				"name": "ForEach - IterateSQLTables",
 				"type": "ForEach",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.cw_items",
+						"value": "@pipeline().parameters.tableList",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
-							"name": "Copy_qwc",
+							"name": "Copy each table",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -87,7 +87,7 @@
 			}
 		],
 		"parameters": {
-			"cw_items": {
+			"tableList": {
 				"type": "Array",
 				"defaultValue": [
 					{
