@@ -516,7 +516,7 @@
 			}
 		],
 		"folder": {
-			"name": "BACKUP PROCESS/BULK"
+			"name": "BACKUP PROCESS/BULK/child pipelines"
 		},
 		"annotations": []
 	}

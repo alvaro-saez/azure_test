@@ -73,7 +73,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS/INDIVIDUAL"
+			"name": "BACKUP PROCESS/INDIVIDUAL/child pipelines"
 		},
 		"annotations": []
 	}
