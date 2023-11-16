@@ -1,5 +1,5 @@
 {
-	"name": "CopyPipeline_ju2",
+	"name": "b - SQL_prod_to_dev-bulk",
 	"properties": {
 		"activities": [
 			{
@@ -42,9 +42,13 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "@item().copySink.preCopyScript",
+										"value": "@{item().copySink.preCopyScript}",
 										"type": "Expression"
-									}
+									},
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"validateDataConsistency": false,
