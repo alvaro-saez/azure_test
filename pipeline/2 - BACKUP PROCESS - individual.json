@@ -1,0 +1,49 @@
+{
+	"name": "2 - BACKUP PROCESS - individual",
+	"properties": {
+		"activities": [
+			{
+				"name": "DEV to DEV BACKUP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2a - DEV to DEV BACKUP - individial",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "PROD to DEV",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "DEV to DEV BACKUP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2b - PROD to DEV - individial",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BACKUP PROCESS/INDIVIDUAL"
+		},
+		"annotations": []
+	}
+}
