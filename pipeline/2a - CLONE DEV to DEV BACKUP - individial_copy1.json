@@ -58,17 +58,25 @@
 							"tabla_name": {
 								"value": "@pipeline().parameters.tabla_name",
 								"type": "Expression"
+							},
+							"database_name": {
+								"value": "@pipeline().parameters.database_name_origin_backup",
+								"type": "Expression"
 							}
 						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SQLdev_all_tables_parametrized",
+						"referenceName": "SQL_db_destination_backup",
 						"type": "DatasetReference",
 						"parameters": {
 							"tabla_name": {
-								"value": "@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}",
+								"value": "@pipeline().parameters.tabla_name",
+								"type": "Expression"
+							},
+							"database_name": {
+								"value": "@pipeline().parameters.database_name_destination_backup",
 								"type": "Expression"
 							}
 						}
