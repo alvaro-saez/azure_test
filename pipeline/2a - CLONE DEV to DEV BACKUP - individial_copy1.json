@@ -61,7 +61,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"tabla_name": {
-								"value": "@{pipeline().parameters.tabla_name}_@{utcnow()}",
+								"value": "@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}",
 								"type": "Expression"
 							}
 						}
