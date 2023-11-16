@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "1b - COPY TABLES from PROD to DEV",
 	"properties": {
 		"activities": [
 			{
