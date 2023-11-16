@@ -44,7 +44,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.@{item().destination.table})\nBEGIN\n\tDROP TABLE dbo.@{item().destination.table}\nEND",
+										"value": "IF OBJECT_ID('dbo.@{item().destination.table}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{item().destination.table};  ",
 										"type": "Expression"
 									},
 									"writeBehavior": "insert",
@@ -98,7 +98,7 @@
 							"table": "t0_incidencias_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_incidencias_remedy)     BEGIN         DROP TABLE dbo.t0_incidencias_remedy}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_incidencias_remedy','U')ISNOTNULL DROPTABLEdbo.t0_incidencias_remedy;"
 						}
 					},
 					{
@@ -109,7 +109,7 @@
 							"table": "t0_peticiones_remedy"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_peticiones_remedy)     BEGIN         DROP TABLE dbo.t0_peticiones_remedy}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_peticiones_remedy','U')ISNOTNULL DROPTABLEdbo.t0_peticiones_remedy;"
 						}
 					},
 					{
@@ -120,7 +120,7 @@
 							"table": "t0_coste_cpu_adicional"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_coste_cpu_adicional)     BEGIN         DROP TABLE dbo.t0_coste_cpu_adicional}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_coste_cpu_adicional','U')ISNOTNULL DROPTABLEdbo.t0_coste_cpu_adicional;"
 						}
 					},
 					{
@@ -131,7 +131,7 @@
 							"table": "t0_data_tecnica"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_data_tecnica)     BEGIN         DROP TABLE dbo.t0_data_tecnica}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_data_tecnica','U')ISNOTNULL DROPTABLEdbo.t0_data_tecnica;"
 						}
 					},
 					{
@@ -142,7 +142,7 @@
 							"table": "t0_disponibilidad_vm"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_disponibilidad_vm)     BEGIN         DROP TABLE dbo.t0_disponibilidad_vm}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_disponibilidad_vm','U')ISNOTNULL DROPTABLEdbo.t0_disponibilidad_vm;"
 						}
 					},
 					{
@@ -153,7 +153,7 @@
 							"table": "t0_gestion_sla_definition"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_gestion_sla_definition)     BEGIN         DROP TABLE dbo.t0_gestion_sla_definition}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_gestion_sla_definition','U')ISNOTNULL DROPTABLEdbo.t0_gestion_sla_definition;"
 						}
 					},
 					{
@@ -164,7 +164,7 @@
 							"table": "t0_tipo_tarificacion_por_cliente"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_tipo_tarificacion_por_cliente)     BEGIN         DROP TABLE dbo.t0_tipo_tarificacion_por_cliente}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_tipo_tarificacion_por_cliente','U')ISNOTNULL DROPTABLEdbo.t0_tipo_tarificacion_por_cliente;"
 						}
 					},
 					{
@@ -175,7 +175,7 @@
 							"table": "t0_nombre_cliente_tecnico_vs_centreon"
 						},
 						"copySink": {
-							"preCopyScript": "IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_NAME = dbo.t0_nombre_cliente_tecnico_vs_centreon)     BEGIN         DROP TABLE dbo.t0_nombre_cliente_tecnico_vs_centreon}     END;"
+							"preCopyScript": "IFOBJECT_ID('dbo.t0_nombre_cliente_tecnico_vs_centreon','U')ISNOTNULL DROPTABLEdbo.t0_nombre_cliente_tecnico_vs_centreon;"
 						}
 					}
 				]
