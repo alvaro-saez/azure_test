@@ -19,6 +19,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "BACKUP PROCESS DATASETS"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
