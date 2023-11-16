@@ -20,7 +20,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS DATASETS"
+			"name": "BACKUP PROCESS DATASETS/To create backup tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
