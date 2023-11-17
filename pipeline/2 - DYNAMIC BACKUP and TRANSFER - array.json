@@ -1,5 +1,5 @@
 {
-	"name": "2 - DYNAMIC BACKUP PROCESS",
+	"name": "2 - DYNAMIC BACKUP and TRANSFER - array",
 	"properties": {
 		"activities": [
 			{
@@ -9,17 +9,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2a - DYNAMIC BACKUP",
+						"referenceName": "2a - DYNAMIC BACKUP - array",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"database_name_origin_backup": {
-							"value": "@pipeline().parameters.database_name_origin_backup",
-							"type": "Expression"
-						},
-						"database_name_destination_backup": {
-							"value": "@pipeline().parameters.database_name_destination_backup",
+						"database_name_destination": {
+							"value": "@pipeline().parameters.database_name_destination",
 							"type": "Expression"
 						},
 						"tableList": {
@@ -43,17 +39,17 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2b - DYNAMIC TRANSFER TABLES",
+						"referenceName": "2b - DYNAMIC TRANSFER TABLES - array",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"origin_database_name_to_transfer_table_to_another_database": {
-							"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
+						"database_name_origin": {
+							"value": "@pipeline().parameters.database_name_origin",
 							"type": "Expression"
 						},
-						"destination_database_name_to_transfer_table_to_another_database": {
-							"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
+						"database_name_destination": {
+							"value": "@pipeline().parameters.database_name_destination",
 							"type": "Expression"
 						},
 						"tableList": {
@@ -68,21 +64,15 @@
 			"tableList": {
 				"type": "array"
 			},
-			"database_name_origin_backup": {
+			"database_name_origin": {
 				"type": "string"
 			},
-			"database_name_destination_backup": {
-				"type": "string"
-			},
-			"origin_database_name_to_transfer_table_to_another_database": {
-				"type": "string"
-			},
-			"destination_database_name_to_transfer_table_to_another_database": {
+			"database_name_destination": {
 				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/DYNAMIC - array tables ¡BEST!"
+			"name": "BACKUP | TRANSFER pipeline/DYNAMIC - array tables ¡BEST!"
 		},
 		"annotations": []
 	}

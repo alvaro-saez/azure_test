@@ -2,10 +2,10 @@
 	"name": "SQL_db_origin_backup",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SQL_db_origin_backup_parametriced",
+			"referenceName": "SQLdb_parametriced",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"database_name_origin_backup": {
+				" database_name": {
 					"value": "@dataset().database_name",
 					"type": "Expression"
 				}
@@ -20,7 +20,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS DATASETS/To create backup tables"
+			"name": "BACKUP | TRANSFER datasets/DYNAMIC - SQLdb parametriced/To create backup tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

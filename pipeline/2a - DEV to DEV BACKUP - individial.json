@@ -32,7 +32,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"preCopyScript": {
-							"value": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_backup;  ",
+							"value": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')};  ",
 							"type": "Expression"
 						},
 						"writeBehavior": "insert",
@@ -55,7 +55,8 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": "@pipeline().parameters.tabla_name",
+							"database_name": "alvaro-dev"
 						}
 					}
 				],
@@ -64,7 +65,11 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@{pipeline().parameters.tabla_name}_backup"
+							"tabla_name": {
+								"value": "@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}",
+								"type": "Expression"
+							},
+							"database_name": "alvaro-dev"
 						}
 					}
 				]
@@ -76,7 +81,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/STATIC - one by one/child pipelines"
+			"name": "BACKUP | TRANSFER pipeline/STATIC - one by one/child pipelines"
 		},
 		"annotations": []
 	}

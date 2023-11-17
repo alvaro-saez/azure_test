@@ -1,5 +1,5 @@
 {
-	"name": "2b - DYNAMIC TRANSFER TABLES",
+	"name": "2a - DYNAMIC BACKUP - array",
 	"properties": {
 		"activities": [
 			{
@@ -24,7 +24,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "dbo.@{item()}"
+								},
+								{
+									"name": "Destination",
+									"value": "dbo.@{concat(item(), '_', formatDateTime(utcnow(),'yyyyMMddHHmm'))}"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
@@ -34,7 +43,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "IF OBJECT_ID('dbo.@{item()}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{item()}; ",
+										"value": "IF OBJECT_ID('dbo.@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')};\n\n",
 										"type": "Expression"
 									},
 									"writeBehavior": "insert",
@@ -54,7 +63,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "SQL_db_origin_copy_table",
+									"referenceName": "SQL_db_origin_backup",
 									"type": "DatasetReference",
 									"parameters": {
 										"tabla_name_iterada": {
@@ -62,7 +71,7 @@
 											"type": "Expression"
 										},
 										"database_name": {
-											"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
+											"value": "@pipeline().parameters.database_name_destination",
 											"type": "Expression"
 										}
 									}
@@ -70,15 +79,15 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "SQL_db_destination_copy_table",
+									"referenceName": "SQL_db_destination_backup",
 									"type": "DatasetReference",
 									"parameters": {
 										"tabla_name_iterada": {
-											"value": "@item()",
+											"value": "@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}",
 											"type": "Expression"
 										},
 										"database_name": {
-											"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
+											"value": "@pipeline().parameters.database_name_destination",
 											"type": "Expression"
 										}
 									}
@@ -90,10 +99,7 @@
 			}
 		],
 		"parameters": {
-			"origin_database_name_to_transfer_table_to_another_database": {
-				"type": "string"
-			},
-			"destination_database_name_to_transfer_table_to_another_database": {
+			"database_name_destination": {
 				"type": "string"
 			},
 			"tableList": {
@@ -101,7 +107,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/DYNAMIC - array tables ¡BEST!/child pipelines"
+			"name": "BACKUP | TRANSFER pipeline/DYNAMIC - array tables ¡BEST!/child pipelines"
 		},
 		"annotations": []
 	}

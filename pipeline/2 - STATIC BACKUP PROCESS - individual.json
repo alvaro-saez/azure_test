@@ -1,5 +1,5 @@
 {
-	"name": "2 - BACKUP PROCESS - individual",
+	"name": "2 - STATIC BACKUP PROCESS - individual",
 	"properties": {
 		"activities": [
 			{
@@ -54,7 +54,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/STATIC - one by one"
+			"name": "BACKUP | TRANSFER pipeline/STATIC - one by one"
 		},
 		"annotations": []
 	}

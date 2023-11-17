@@ -2,10 +2,10 @@
 	"name": "SQL_db_origin_copy_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SQL_db_origin_copy_table_to_other_db",
+			"referenceName": "SQLdb_parametriced",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"origin_database_name_to_transfer_table_to_another_database": {
+				" database_name": {
 					"value": "@dataset().database_name",
 					"type": "Expression"
 				}
@@ -20,7 +20,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS DATASETS/To transfer tables"
+			"name": "BACKUP | TRANSFER datasets/DYNAMIC - SQLdb parametriced/To transfer tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

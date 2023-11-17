@@ -14,10 +14,6 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "MoviesSinkoutput",
-						"type": "DatasetReference"
-					},
 					"name": "outputMovies"
 				}
 			],
