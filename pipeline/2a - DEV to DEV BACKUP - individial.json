@@ -31,7 +31,10 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_backup;  ",
+						"preCopyScript": {
+							"value": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_backup', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_backup;  ",
+							"type": "Expression"
+						},
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
@@ -73,7 +76,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS/INDIVIDUAL/child pipelines"
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL/STATIC/child pipelines"
 		},
 		"annotations": []
 	}
