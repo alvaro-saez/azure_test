@@ -71,7 +71,7 @@
 						"referenceName": "SQL_db_destination_copy_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": {
+							"tabla_name_iterada": {
 								"value": "@pipeline().parameters.tabla_name",
 								"type": "Expression"
 							},
