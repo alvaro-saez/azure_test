@@ -55,7 +55,8 @@
 						"referenceName": "SQLprod_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": "@pipeline().parameters.tabla_name",
+							"database_name": "alvaro-prod"
 						}
 					}
 				],
@@ -64,7 +65,8 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": "@pipeline().parameters.tabla_name",
+							"database_name": "alvaro-dev"
 						}
 					}
 				]
