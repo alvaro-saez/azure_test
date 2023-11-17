@@ -1,0 +1,83 @@
+{
+	"name": "2 - COPY DYNAMIC BACKUP PROCESS",
+	"properties": {
+		"activities": [
+			{
+				"name": "GENERATE BACKUP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2a - COPY DYNAMIC BACKUP",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"database_name_origin": {
+							"value": "@pipeline().parameters.database_name_origin",
+							"type": "Expression"
+						},
+						"database_name_destination": {
+							"value": "@pipeline().parameters.database_name_destination",
+							"type": "Expression"
+						},
+						"tableList": {
+							"value": "@pipeline().parameters.tableList",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "TRANSFER TABLES",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "GENERATE BACKUP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2b - COPY DYNAMIC TRANSFER TABLES",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"database_name_origin": {
+							"value": "@pipeline().parameters.database_name_origin",
+							"type": "Expression"
+						},
+						"database_name_destination": {
+							"value": "@pipeline().parameters.database_name_destination",
+							"type": "Expression"
+						},
+						"tableList": {
+							"value": "@pipeline().parameters.tableList",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"tableList": {
+				"type": "array"
+			},
+			"database_name_origin": {
+				"type": "string"
+			},
+			"database_name_destination": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/DYNAMIC - array tables ¡BEST!"
+		},
+		"annotations": []
+	}
+}
