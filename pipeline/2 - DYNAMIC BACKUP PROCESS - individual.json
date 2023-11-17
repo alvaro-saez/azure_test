@@ -21,6 +21,10 @@
 						"database_name_destination_backup": {
 							"value": "@pipeline().parameters.database_name_destination_backup",
 							"type": "Expression"
+						},
+						"tableList": {
+							"value": "@pipeline().parameters.tableList",
+							"type": "Expression"
 						}
 					}
 				}
@@ -50,6 +54,10 @@
 						},
 						"destination_database_name_to_transfer_table_to_another_database": {
 							"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
+							"type": "Expression"
+						},
+						"tableList": {
+							"value": "@pipeline().parameters.tableList",
 							"type": "Expression"
 						}
 					}
