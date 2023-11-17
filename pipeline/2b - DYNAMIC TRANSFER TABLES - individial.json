@@ -82,16 +82,22 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
 		"parameters": {
-			"tabla_name": {
-				"type": "String"
-			},
 			"origin_database_name_to_transfer_table_to_another_database": {
 				"type": "string"
 			},
 			"destination_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
+			},
+			"tableList": {
 				"type": "string"
 			}
 		},
