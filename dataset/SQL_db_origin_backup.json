@@ -1,0 +1,36 @@
+{
+	"name": "SQL_db_origin_backup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQLdb_parametriced",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				" database_name": {
+					"value": "@dataset().database_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"tabla_name_iterada": {
+				"type": "string"
+			},
+			"database_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BACKUP | TRANSFER datasets/DYNAMIC - SQLdb parametriced/To create backup tables"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tabla_name_iterada",
+				"type": "Expression"
+			}
+		}
+	}
+}
