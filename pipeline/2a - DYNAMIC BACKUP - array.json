@@ -63,7 +63,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "SQL_db_destination_backup",
+									"referenceName": "SQL_db_origin_backup",
 									"type": "DatasetReference",
 									"parameters": {
 										"tabla_name_iterada": {
