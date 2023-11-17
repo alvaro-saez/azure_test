@@ -27,11 +27,11 @@
 							"userProperties": [
 								{
 									"name": "Source",
-									"value": "dbo.@{pipeline().parameters.tabla_name}"
+									"value": "dbo.@{item()}"
 								},
 								{
 									"name": "Destination",
-									"value": "dbo.@{pipeline().parameters.tabla_name}"
+									"value": "dbo.@{item()}"
 								}
 							],
 							"typeProperties": {
@@ -66,8 +66,8 @@
 									"referenceName": "SQL_db_origin_backup",
 									"type": "DatasetReference",
 									"parameters": {
-										"tabla_name": {
-											"value": "@pipeline().parameters.tabla_name",
+										"tabla_name_iterada": {
+											"value": "@item()",
 											"type": "Expression"
 										},
 										"database_name": {
@@ -82,8 +82,8 @@
 									"referenceName": "SQL_db_destination_backup",
 									"type": "DatasetReference",
 									"parameters": {
-										"tabla_name": {
-											"value": "@pipeline().parameters.tabla_name",
+										"tabla_name_iterada": {
+											"value": "@item()",
 											"type": "Expression"
 										},
 										"database_name": {
@@ -99,9 +99,6 @@
 			}
 		],
 		"parameters": {
-			"tabla_name": {
-				"type": "String"
-			},
 			"database_name_origin_backup": {
 				"type": "string"
 			},
