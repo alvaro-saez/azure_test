@@ -83,7 +83,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tabla_name_iterada": {
-											"value": "@item()",
+											"value": "@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}",
 											"type": "Expression"
 										},
 										"database_name": {
