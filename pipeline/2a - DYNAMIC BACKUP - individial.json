@@ -43,7 +43,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "IF OBJECT_ID('dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{pipeline().parameters.tabla_name}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')};",
+										"value": "IF OBJECT_ID('dbo.@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{item()}_@{formatDateTime(utcnow(),'yyyyMMddHHmm')};\n\n",
 										"type": "Expression"
 									},
 									"writeBehavior": "insert",
