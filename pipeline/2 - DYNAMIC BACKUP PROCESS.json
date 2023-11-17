@@ -1,5 +1,5 @@
 {
-	"name": "2 - DYNAMIC BACKUP PROCESS - individual",
+	"name": "2 - DYNAMIC BACKUP PROCESS",
 	"properties": {
 		"activities": [
 			{
@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2a - DYNAMIC BACKUP - individial",
+						"referenceName": "2a - DYNAMIC BACKUP",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
@@ -43,7 +43,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2b - DYNAMIC TRANSFER TABLES - individial",
+						"referenceName": "2b - DYNAMIC TRANSFER TABLES",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
@@ -82,7 +82,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL/DYNAMIC"
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/DYNAMIC - array tables ¡BEST!"
 		},
 		"annotations": []
 	}

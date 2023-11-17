@@ -516,7 +516,7 @@
 			}
 		],
 		"folder": {
-			"name": "BACKUP | TRANSFER process/BULK/child pipelines"
+			"name": "BACKUP | TRANSFER process/BULK - all tables/child pipelines"
 		},
 		"annotations": []
 	}

@@ -1,5 +1,5 @@
 {
-	"name": "2a - DYNAMIC BACKUP - individial",
+	"name": "2a - DYNAMIC BACKUP",
 	"properties": {
 		"activities": [
 			{
@@ -110,7 +110,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL/DYNAMIC/child pipelines"
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL ¡BEST!/DYNAMIC - array tables ¡BEST!/child pipelines"
 		},
 		"annotations": []
 	}
