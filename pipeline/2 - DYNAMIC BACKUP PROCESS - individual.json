@@ -1,0 +1,89 @@
+{
+	"name": "2 - DYNAMIC BACKUP PROCESS - individual",
+	"properties": {
+		"activities": [
+			{
+				"name": "GENERATE BACKUP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2a - DYNAMIC BACKUP - individial",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"tabla_name": {
+							"value": "@pipeline().parameters.tabla_name",
+							"type": "Expression"
+						},
+						"database_name_origin_backup": {
+							"value": "@pipeline().parameters.database_name_origin_backup",
+							"type": "Expression"
+						},
+						"database_name_destination_backup": {
+							"value": "@pipeline().parameters.database_name_destination_backup",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "TRANSFER TABLES",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "GENERATE BACKUP",
+						"dependencyConditions": [
+							"Skipped"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2b - DYNAMIC TRANSFER TABLES - individial",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"tabla_name": {
+							"value": "@pipeline().parameters.tabla_name",
+							"type": "Expression"
+						},
+						"origin_database_name_to_transfer_table_to_another_database": {
+							"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
+							"type": "Expression"
+						},
+						"destination_database_name_to_transfer_table_to_another_database": {
+							"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"tabla_name": {
+				"type": "string"
+			},
+			"database_name_origin_backup": {
+				"type": "string"
+			},
+			"database_name_destination_backup": {
+				"type": "string"
+			},
+			"origin_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
+			},
+			"destination_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL/DYNAMIC"
+		},
+		"annotations": []
+	}
+}

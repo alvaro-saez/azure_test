@@ -1,5 +1,5 @@
 {
-	"name": "2b - PROD to DEV - individial",
+	"name": "2b - DYNAMIC TRANSFER TABLES - individial",
 	"properties": {
 		"activities": [
 			{
@@ -52,19 +52,33 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SQLprod_all_tables_parametrized",
+						"referenceName": "SQL_db_origin_copy_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": {
+								"value": "@pipeline().parameters.tabla_name",
+								"type": "Expression"
+							},
+							"database_name": {
+								"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
+								"type": "Expression"
+							}
 						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SQLdev_all_tables_parametrized",
+						"referenceName": "SQL_db_destination_copy_table",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": {
+								"value": "@pipeline().parameters.tabla_name",
+								"type": "Expression"
+							},
+							"database_name": {
+								"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
+								"type": "Expression"
+							}
 						}
 					}
 				]
@@ -73,10 +87,16 @@
 		"parameters": {
 			"tabla_name": {
 				"type": "String"
+			},
+			"origin_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
+			},
+			"destination_database_name_to_transfer_table_to_another_database": {
+				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/INDIVIDUAL/STATIC/child pipelines"
+			"name": "BACKUP | TRANSFER process/INDIVIDUAL/DYNAMIC/child pipelines"
 		},
 		"annotations": []
 	}

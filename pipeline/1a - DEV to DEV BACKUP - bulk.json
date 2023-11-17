@@ -1874,7 +1874,7 @@
 			}
 		],
 		"folder": {
-			"name": "BACKUP PROCESS/BULK/child pipelines"
+			"name": "BACKUP | TRANSFER process/BULK/child pipelines"
 		},
 		"annotations": []
 	}

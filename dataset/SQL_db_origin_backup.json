@@ -1,23 +1,26 @@
 {
-	"name": "SQLdev_all_tables_parametrized",
+	"name": "SQL_db_origin_backup",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SQL_db_destination_backup_parametriced",
+			"referenceName": "SQL_db_origin_backup_parametriced",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"database_name_destination_backup": {
-					"value": "@database_name_destination_backup",
+				"database_name_origin_backup": {
+					"value": "@dataset().database_name",
 					"type": "Expression"
 				}
 			}
 		},
 		"parameters": {
-			"tabla_name": {
+			"tabla_name_iterada": {
+				"type": "string"
+			},
+			"database_name": {
 				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "SQLdb parametrizados"
+			"name": "BACKUP PROCESS DATASETS/To create backup tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
@@ -25,7 +28,7 @@
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
-				"value": "@dataset().tabla_name",
+				"value": "@dataset().tabla_name_iterada",
 				"type": "Expression"
 			}
 		}

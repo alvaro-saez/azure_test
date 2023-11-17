@@ -1,12 +1,12 @@
 {
-	"name": "SQLdev_all_tables_parametrized",
+	"name": "SQL_db_destination_copy_table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SQL_db_destination_backup_parametriced",
+			"referenceName": "SQL_db_destination_copy_table_to_other_db",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"database_name_destination_backup": {
-					"value": "@database_name_destination_backup",
+				"destination_database_name_to_transfer_table_to_another_database": {
+					"value": "@dataset().database_name",
 					"type": "Expression"
 				}
 			}
@@ -14,10 +14,13 @@
 		"parameters": {
 			"tabla_name": {
 				"type": "string"
+			},
+			"database_name": {
+				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "SQLdb parametrizados"
+			"name": "BACKUP PROCESS DATASETS/To transfer tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

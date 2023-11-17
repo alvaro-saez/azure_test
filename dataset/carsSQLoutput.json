@@ -5,6 +5,9 @@
 			"referenceName": "OutputSQLCars",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "OTROS"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
