@@ -51,6 +51,9 @@
 		"parameters": {
 			"tabla_name": {
 				"type": "string"
+			},
+			"database_name": {
+				"type": "string"
 			}
 		},
 		"folder": {
