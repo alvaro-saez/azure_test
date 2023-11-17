@@ -62,7 +62,7 @@
 											"type": "Expression"
 										},
 										"database_name": {
-											"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
+											"value": "@pipeline().parameters.database_name_origin",
 											"type": "Expression"
 										}
 									}
