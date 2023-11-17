@@ -55,7 +55,8 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@pipeline().parameters.tabla_name"
+							"tabla_name": "@pipeline().parameters.tabla_name",
+							"database_name": "alvaro-dev"
 						}
 					}
 				],
@@ -64,7 +65,8 @@
 						"referenceName": "SQLdev_all_tables_parametrized",
 						"type": "DatasetReference",
 						"parameters": {
-							"tabla_name": "@{pipeline().parameters.tabla_name}_backup"
+							"tabla_name": "@{pipeline().parameters.tabla_name}_backup",
+							"database_name": "alvaro-dev"
 						}
 					}
 				]
@@ -73,9 +75,6 @@
 		"parameters": {
 			"tabla_name": {
 				"type": "String"
-			},
-			"database_name": {
-				"type": "string"
 			}
 		},
 		"folder": {
