@@ -33,8 +33,13 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "IF OBJECT_ID('dbo.@{item()}', 'U') IS NOT NULL  \n   DROP TABLE dbo.@{item()}; ",
+										"type": "Expression"
+									},
 									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"translator": {
@@ -67,6 +72,10 @@
 									"referenceName": "SQL_db_destination_copy_table",
 									"type": "DatasetReference",
 									"parameters": {
+										"tabla_name_iterada": {
+											"value": "@item()",
+											"type": "Expression"
+										},
 										"database_name": {
 											"value": "@pipeline().parameters.destination_database_name_to_transfer_table_to_another_database",
 											"type": "Expression"
