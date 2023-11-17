@@ -14,10 +14,6 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"database_name_origin": {
-							"value": "@pipeline().parameters.database_name_origin",
-							"type": "Expression"
-						},
 						"database_name_destination": {
 							"value": "@pipeline().parameters.database_name_destination",
 							"type": "Expression"
