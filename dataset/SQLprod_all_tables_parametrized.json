@@ -11,7 +11,7 @@
 			}
 		},
 		"folder": {
-			"name": "SQLdb parametrizados"
+			"name": "BACKUP | TRANSFER datasets/STATIC - SQLdb parametrized"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

@@ -76,7 +76,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP | TRANSFER process/STATIC - one by one/child pipelines"
+			"name": "BACKUP | TRANSFER pipeline/STATIC - one by one/child pipelines"
 		},
 		"annotations": []
 	}

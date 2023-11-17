@@ -20,7 +20,7 @@
 			}
 		},
 		"folder": {
-			"name": "BACKUP PROCESS DATASETS/To transfer tables"
+			"name": "BACKUP | TRANSFER datasets/DYNAMIC - SQLdb parametriced/To transfer tables"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
