@@ -1,5 +1,5 @@
 {
-	"name": "2 - COPY DYNAMIC BACKUP PROCESS",
+	"name": "2 - DYNAMIC BACKUP PROCESS",
 	"properties": {
 		"activities": [
 			{
@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2a - COPY DYNAMIC BACKUP",
+						"referenceName": "2a - DYNAMIC BACKUP",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
@@ -39,7 +39,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "2b - COPY DYNAMIC TRANSFER TABLES",
+						"referenceName": "2b - DYNAMIC TRANSFER TABLES",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
