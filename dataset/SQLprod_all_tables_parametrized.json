@@ -2,11 +2,20 @@
 	"name": "SQLprod_all_tables_parametrized",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "PROD SQL Herramienta COPY DATA",
-			"type": "LinkedServiceReference"
+			"referenceName": "SQLdb_parametriced",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				" database_name": {
+					"value": "@dataset().database_name",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"tabla_name": {
+				"type": "string"
+			},
+			"database_name": {
 				"type": "string"
 			}
 		},
