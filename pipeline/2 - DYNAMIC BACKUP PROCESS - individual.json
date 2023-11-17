@@ -36,7 +36,7 @@
 					{
 						"activity": "GENERATE BACKUP",
 						"dependencyConditions": [
-							"Skipped"
+							"Succeeded"
 						]
 					}
 				],

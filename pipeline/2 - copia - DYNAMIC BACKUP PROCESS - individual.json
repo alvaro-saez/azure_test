@@ -14,10 +14,6 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"tabla_name": {
-							"value": "@pipeline().parameters.tabla_name",
-							"type": "Expression"
-						},
 						"database_name_origin_backup": {
 							"value": "@pipeline().parameters.database_name_origin_backup",
 							"type": "Expression"
@@ -36,7 +32,7 @@
 					{
 						"activity": "GENERATE BACKUP",
 						"dependencyConditions": [
-							"Skipped"
+							"Succeeded"
 						]
 					}
 				],
@@ -48,10 +44,6 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
-						"tabla_name": {
-							"value": "@pipeline().parameters.tabla_name",
-							"type": "Expression"
-						},
 						"origin_database_name_to_transfer_table_to_another_database": {
 							"value": "@pipeline().parameters.origin_database_name_to_transfer_table_to_another_database",
 							"type": "Expression"
