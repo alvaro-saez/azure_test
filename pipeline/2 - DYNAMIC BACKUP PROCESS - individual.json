@@ -58,7 +58,7 @@
 		],
 		"parameters": {
 			"tableList": {
-				"type": "string"
+				"type": "array"
 			},
 			"database_name_origin_backup": {
 				"type": "string"
