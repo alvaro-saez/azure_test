@@ -31,7 +31,7 @@
 								},
 								{
 									"name": "Destination",
-									"value": "dbo.@{item()}"
+									"value": "dbo.@{concat(item(), '_', formatDateTime(utcnow(),'yyyyMMddHHmm'))}"
 								}
 							],
 							"typeProperties": {
